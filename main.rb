@@ -19,7 +19,7 @@ commits = []
 tags.each do |tag|
   commit = tag["commit"]
   Dir.chdir(repo_directory) do
-    sha = syscall("git rev-parse :/'#{commit}'")
+    sha = syscall("git rev-parse :/\"#{commit}\"")
     if sha
       commits << {sha:, annotation: tag["tag"], message: tag["message"]}
     end
